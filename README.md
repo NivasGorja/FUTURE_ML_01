@@ -1,19 +1,59 @@
-This directory includes a few sample datasets to get you started.
+# 📈 Customer Sales Forecasting with Machine Learning
 
-*   `california_housing_data*.csv` is California housing data from the 1990 US
-    Census; more information is available at:
-    https://docs.google.com/document/d/e/2PACX-1vRhYtsvc5eOR2FWNCwaBiKL6suIOrxJig8LcSBbmCbyYsayia_DvPOOBlXZ4CAlQ5nlDD8kTaIDRwrN/pub
+This project focuses on time series forecasting of monthly customer sales using machine learning and deep learning models. It leverages data preprocessing, feature engineering, and modeling techniques to predict future sales based on historical transaction records.
 
-*   `mnist_*.csv` is a small sample of the
-    [MNIST database](https://en.wikipedia.org/wiki/MNIST_database), which is
-    described at: http://yann.lecun.com/exdb/mnist/
+## 🧠 Models Used
 
-*   `anscombe.json` contains a copy of
-    [Anscombe's quartet](https://en.wikipedia.org/wiki/Anscombe%27s_quartet); it
-    was originally described in
+- Linear Regression
+- (Optional to extend) Random Forest, XGBoost, LSTM
 
-    Anscombe, F. J. (1973). 'Graphs in Statistical Analysis'. American
-    Statistician. 27 (1): 17-21. JSTOR 2682899.
+## 📁 Dataset
 
-    and our copy was prepared by the
-    [vega_datasets library](https://github.com/altair-viz/vega_datasets/blob/4f67bdaad10f45e3549984e17e1b3088c731503d/vega_datasets/_data/anscombe.json).
+The project uses a sample dataset: `sales_data_sample.csv`.
+
+Key fields include:
+- `ORDERDATE`: The date of the transaction
+- `SALES`: Sales value for each order
+- Other customer and product-related metadata
+
+## 📊 Workflow Summary
+
+1. **Load and Explore Dataset**
+   - Parse the dataset
+   - Check for null values and data types
+
+2. **Preprocessing**
+   - Convert `ORDERDATE` to datetime
+   - Group by month and sum sales
+   - Calculate monthly sales difference for stationarity
+
+3. **Feature Engineering**
+   - Create lag features for 12 months
+   - Normalize features using MinMaxScaler
+
+4. **Train/Test Split**
+   - Split the last 12 months as test data
+   - Prepare input features and target variable
+
+5. **Modeling**
+   - Train a Linear Regression model
+   - Predict sales difference, convert to actual sales
+   - Evaluate performance using MSE, MAE, and R²
+
+6. **Visualization**
+   - Plot actual vs. predicted sales
+
+## 📈 Output Example
+
+The project visualizes:
+- Raw monthly sales trends
+- Transformed sales difference
+- Predicted vs actual sales using a linear regression model
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+Install required packages:
+```bash
+pip install pandas numpy matplotlib scikit-learn xgboost tensorflow
